@@ -1,0 +1,39 @@
+<div ng-show="isVisible()">
+    <ul class="pagination">
+
+        <!-- previous button -->
+        <li ng-class="{'disabled': !previousButtonEnabled}">
+            <a ng-click="goToPreviousPage($event)" href="#">&laquo;</a>
+        </li>
+
+        <!-- previous ellipsis -->
+        <li class="disabled" ng-show="previousEllipsisVisible">
+            <a>...</a>
+        </li>
+
+        <!-- pages -->
+        <li ng-repeat="pageNumber in pages track by $index" ng-class="{'active': pageNumber == currentPage}">
+            <a ng-click="goToPage($event, pageNumber)" href="#">{{pageNumber + 1}}</a>
+        </li>
+
+        <!-- next ellipsis -->
+        <li class="disabled" ng-show="nextEllipsisVisible">
+            <a>...</a>
+        </li>
+
+        <!-- next button -->
+        <li ng-class="{'disabled': !nextButtonEnabled}">
+            <a ng-click="goToNextPage($event)" href="#">&raquo;</a>
+        </li>
+
+    </ul>
+
+    <ul class="pager">
+        <li ng-class="{'disabled': !firstButtonEnabled}">
+            <a ng-click="goToFirstPage($event)" href="#">&larr; First</a>
+        </li>
+        <li ng-class="{'disabled': !lastButtonEnabled}">
+            <a ng-click="goToLastPage($event)" href="#">Last &rarr;</a>
+        </li>
+    </ul>
+</div>
