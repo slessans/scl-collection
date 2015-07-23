@@ -117,7 +117,7 @@
 
             },
 
-            link: function (scope, attrs, element, controllers) {
+            link: function (scope, element, attrs, controllers) {
                 var controller = controllers[0];
                 var collectionController = controllers[1];
 
@@ -150,9 +150,10 @@
 
                 scope.isVisible = function () {
                     return scope.currentPage !== null &&
-                            scope.pageCount !== null &&
-                            !collectionController.isLoading() &&
-                            collectionController.hasItems();
+                        scope.pageCount !== null &&
+                        !collectionController.isLoading() &&
+                        collectionController.hasItems() &&
+                        !(scope.pageCount === 1 && attrs.hasOwnProperty('hideForSinglePage'));
                 };
 
                 scope.$watchGroup(['currentPageIn', 'pageCountIn', 'boxCountIn'], function () {
