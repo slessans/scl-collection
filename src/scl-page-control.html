@@ -28,7 +28,7 @@
 
     </ul>
 
-    <ul class="pager">
+    <ul class="pager" ng-if="showPager !== 'false'">
         <li ng-class="{'disabled': !firstButtonEnabled}">
             <a ng-click="goToFirstPage($event)" href="#">&larr; First</a>
         </li>

@@ -19,7 +19,9 @@
                 currentPageIn: '@currentPage',
                 pageCountIn: '@pageCount',
                 boxCountIn: '@boxCount',
-                changePage: '&?'
+                changePage: '&?',
+                showPager: '@',
+                hideForSinglePage: '@'
             },
             restrict: 'E',
             require: ['sclPageControl', '^sclCollection'],
@@ -153,7 +155,7 @@
                         scope.pageCount !== null &&
                         !collectionController.isLoading() &&
                         collectionController.hasItems() &&
-                        !(scope.pageCount === 1 && attrs.hasOwnProperty('hideForSinglePage'));
+                        !(scope.pageCount === 1 && scope.hideForSinglePage === 'true');
                 };
 
                 scope.$watchGroup(['currentPageIn', 'pageCountIn', 'boxCountIn'], function () {
