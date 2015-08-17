@@ -9,7 +9,8 @@
             transclude: true,
             scope: {
                 promise: '=?',  // promise should resolve array of objects
-                items: '=?'
+                items: '=?',
+                onLoadingChanged: '&?'
             },
             restrict: 'E',
             require: ['sclCollection'],
@@ -54,6 +55,11 @@
                 var controller = controllers[0];
                 scope.$watch('promise', function () {
                     controller._load();
+                });
+                scope.$watch('loading', function () {
+                    if (scope.onLoadingChanged) {
+                        scope.onLoadingChanged({loading: !!scope.loading});
+                    }
                 });
             }
 
